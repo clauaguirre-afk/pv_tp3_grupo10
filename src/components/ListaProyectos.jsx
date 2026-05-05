@@ -1,7 +1,8 @@
-import prooyectoService from "../services/proyecto_services"
+import proyectoService from "../services/proyectoServices"
 import { useState } from "react";
 const ListaProyectos =()=>{
-    const [proyectos, seProyectos] = useState(prooyectoService.obtenerProyectos());
+
+    const [proyectos, setProyectos] = useState(proyectoService.obtenerProyectos());
     
     return(
         <div>
@@ -13,9 +14,11 @@ const ListaProyectos =()=>{
                         <article key={p.id} className="card">
                             <div className="card-content">
                                 <h3>{p.titulo}</h3>
-                                <span className={`badge ${p.estado === 'Finalizado'? 'done' : 'process'}`}>--/el badge completa /---
+                                <span className={`badge ${p.estado === 'Finalizado'? 'done' : 'process'}`}> 
+                                    {p.estado}
                                 </span>
                                 <p><strong>Categoria:</strong>{p.categoria}</p>
+                                <button onClick={()=>eliminar(p.id)}>Eliminar</button>
                             </div>
                         </article>
                     ))}
