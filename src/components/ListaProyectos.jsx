@@ -3,6 +3,10 @@ import { useState } from "react";
 const ListaProyectos =()=>{
 
     const [proyectos, setProyectos] = useState(proyectoService.obtenerProyectos());
+    const eliminar = (id) => {
+        proyectoService.eliminarProyecto(id);
+        setProyectos(proyectoService.obtenerProyectos());
+    }
     
     return(
         <div>
