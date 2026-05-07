@@ -1,7 +1,7 @@
 import Nav from "./Nav"
 const Header = () =>{
     return (
-        <header>
+        <header >
             <h1 id="titulo">Proyectos</h1>
             <Nav/>
         </header>

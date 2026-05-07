@@ -3,7 +3,7 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 const App =()=>{
   return(
-    <div>
+    <div className="contenedor2">
       <Header/>
 
       <main>

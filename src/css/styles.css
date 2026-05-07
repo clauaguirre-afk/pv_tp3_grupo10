@@ -1,0 +1,309 @@
+:root {
+  --color-principal: #1e293b; /* azul oscuro, lo usamos para header/footer */
+  --color-secundario: #3b82f6; /* azul más brillante para botones */
+  --color-fondo: #f1f5f9; /* fondo clarito */
+  --color-texto: #0f172a; /* texto principal */
+  --color-card: #ffffff; /* fondo de las cards */
+}
+
+/* reset porque si no todo viene con estilos raros */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilos para los estados finalizado y en curso  */
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.done {
+  background-color: #16a34a;
+}
+
+.process {
+  background-color: #f59e0b;
+}
+
+/* Estilos para los botones*/
+
+button:hover {
+  background-color: #1d4ed8;
+}
+
+button {
+  background-color: var(--color-secundario);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* contenedor general de toda la página */
+.contenedor2 {
+  font-family: Arial, sans-serif;
+  font-size: 11pt;
+  line-height: 1.6;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* header */
+header {
+  background-color: var(--color-principal);
+  color: white;
+  padding: 1px;
+  width: 100%;
+}
+
+/* nav centrado */
+nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#titulo {
+  font-size: 28px;
+  color: white;
+}
+
+.description {
+  font-size: 13px;
+  color: #cbd5f5;
+  text-align: center;
+  margin-top: 4px;
+}
+
+/* lista del nav */
+nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin-top: 10px;
+}
+
+/* links del nav */
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+/* hover del nav (resalta un poco) */
+nav a:hover {
+  background-color: var(--color-secundario);
+}
+
+nav a:active {
+  background-color: #2563eb;
+}
+
+nav a:focus {
+  outline: 2px solid var(--color-secundario);
+  outline-offset: 2px;
+}
+
+/* links en general (por si aparecen en texto) */
+a {
+  color: var(--color-secundario);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  color: #1d4ed8;
+}
+
+a:focus {
+  outline: 2px solid var(--color-secundario);
+  outline-offset: 2px;
+}
+
+/* para que el footer quede abajo */
+main {
+  flex: 1;
+}
+
+/* títulos de secciones */
+.subtitulo {
+  font-size: 20px;
+  margin: 20px 20px 10px;
+  background-color: var(--color-principal);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+/* tipo bloque destacado */
+.apartado {
+  margin: 10px 0;
+  background-color: var(--color-secundario);
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* textos normales */
+.datos {
+  font-size: 13px;
+  color: var(--color-texto);
+  margin-bottom: 6px;
+}
+
+/* etiqueta tipo badge */
+.categoria {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  background-color: var(--color-secundario);
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-top: 6px;
+}
+
+/* número grande (lo usamos para stats) */
+.dato-numero {
+  font-size: 36px;
+  font-weight: bold;
+  color: var(--color-principal);
+  text-align: center;
+}
+
+/* cards */
+.card {
+  background-color: var(--color-card);
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+}
+
+/* pequeño efecto cuando paso el mouse */
+.card:hover {
+  transform: translateY(-3px);
+}
+
+/* layout del index */
+.contenedor-index {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .contenedor-index {
+    grid-template-columns: 1fr;
+  }
+}
+
+.izquierda,
+.derecha {
+  display: flex;
+  flex-direction: column;
+}
+
+/* secciones generales */
+section {
+  margin: 20px;
+}
+
+/* contenedor interno */
+.contenido {
+  background-color: var(--color-card);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+/* imágenes centradas */
+.img-centro {
+  display: block;
+  margin: 10px auto;
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+/* filtros (aside) */
+aside {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: var(--color-principal);
+  margin: 0 20px 10px;
+  border-radius: 10px;
+}
+
+aside label {
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* select */
+select {
+  font-size: 13px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--color-secundario);
+  background-color: white;
+  color: var(--color-principal);
+  cursor: pointer;
+}
+
+/* hover del select */
+select:hover {
+  border-color: #1d4ed8;
+}
+
+select:focus {
+  outline: none;
+  border: 2px solid var(--color-secundario);
+}
+
+/* listas */
+ul {
+  padding-left: 20px;
+}
+
+ul li {
+  margin-bottom: 4px;
+}
+
+/* botón ver más */
+.ver-detalle {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 5px 14px;
+  background-color: var(--color-secundario);
+  color: white;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* hover botón */
+.ver-detalle:hover {
+  background-color: #1d4ed8;
+  text-decoration: none;
+}
