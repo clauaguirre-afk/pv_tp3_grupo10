@@ -6,6 +6,6 @@ const Nav = () =>{
                 <li><a href="#">Mi perfil</a></li>
             </ul>
         </nav>
-    )
-}
-export default Nav
+    );
+};
+export default Nav;

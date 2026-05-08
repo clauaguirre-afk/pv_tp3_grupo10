@@ -1,10 +1,10 @@
-import Nav from "./Nav"
+import Nav from "./Nav";
 const Header = () =>{
     return (
         <header >
             <h1 id="titulo">Proyectos</h1>
-            <Nav/>
+            <Nav />
         </header>
-    )
-}
-export default Header
+    );
+};
+export default Header;

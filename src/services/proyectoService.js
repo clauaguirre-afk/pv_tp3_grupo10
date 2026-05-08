@@ -7,14 +7,11 @@ const proyectoService = (()=>{/*funcion con arreglo*/
         {id: 5,titulo:"Ingles", categoria:"PDF", estado:"En curso"}
     ];
 
-    const obtenerProyectos = () =>{
-        return [...proyectos];/*crea una copia del areglo proyecto*/
-    }
+    const obtenerProyectos = () => [...proyectos];/*crea una copia del areglo proyecto*/
+    
 
-    const agregarProyecto=(nuevo)=>{
-        nuevo.id=proyectos.length+1;
-        proyectos.push(nuevo)
-    }
+    const agregarProyecto = (proyecto) => {
+        proyectos.push(proyecto);};
 
     const eliminarProyecto=(id)=>{
         proyectos=proyectos.filter(p => p.id !== id)
