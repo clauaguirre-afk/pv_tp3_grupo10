@@ -1,6 +1,8 @@
 import { useState } from "react";
 import proyectoService from "../services/proyectoService";
 import "../css/listaProyectos.css";
+import ProyectoCard from "./ProyectoCard.jsx";
+import DetalleProyecto from "./DetalleProyecto.jsx";
 const ListaProyectos =()=>{
 
     const [proyectos, setProyectos] = useState(
@@ -11,11 +13,22 @@ const ListaProyectos =()=>{
     const [titulo, setTitulo] = useState("");
     const [categoria, setCategoria] = useState("");
     const [estado, setEstado] = useState("");
-    
+    const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null);
+
     const eliminar = (id) => {
         proyectoService.eliminarProyecto(id);
         setProyectos(proyectoService.obtenerProyectos());
     };
+    const verDetalle =(proyecto) => {
+        setProyectoSeleccionado(proyecto)
+        setTimeout(()=>{
+            document
+            .getElementById("detalle")
+            .scrollIntoView({
+                behavior:"smooth"
+            })
+        },100)
+    }
     const buscar = (texto) => {
         setBusqueda(texto);
         if (texto === "") {
@@ -28,7 +41,7 @@ const ListaProyectos =()=>{
         if (titulo.trim() === "" || categoria.trim() === "" || estado.trim() === ""){alert("Completa todos los campos");
         return;}
         const nuevoProyecto = {
-            id: Date.now(), titulo, categoria, estado};
+            id: Date.now(), titulo, categoria, estado, descripcion:" ", recursos:{pdf:"", drive:"", github:""}, equipo:[]};
         proyectoService.agregarProyecto(nuevoProyecto);
         setProyectos(proyectoService.obtenerProyectos());
         setTitulo("");
@@ -38,7 +51,7 @@ const ListaProyectos =()=>{
 
     return(
         <div>
-            <h2 className="titilo">Gestion de Proyecto Educativos</h2>
+            <h2 className="titulo">Gestion de Proyecto Educativos</h2>
 
             <div className="formulario">
                <input type="text" placeholder="Título" value={titulo} onChange={(e) => setTitulo(e.target.value)}/>
@@ -48,20 +61,18 @@ const ListaProyectos =()=>{
             </div>
             <input type="text" placeholder="Buscar proyecto..." value={busqueda} onChange={(e) => buscar(e.target.value)}/>
 
-            <section>
-                <div>
+            <section className="contenedor-proyectos">
+                <div className="lista-proyectos">
                     {proyectos.map(p =>(
-                        <article key={p.id} className="card">
-                            <div className="card-content">
-                                <h3>{p.titulo}</h3>
-                                <span className={`badge ${p.estado === 'Finalizado'? 'done' : 'process'}`}> 
-                                    {p.estado}
-                                </span>
-                                <p><strong>Categoria:</strong>{p.categoria}</p>
-                                <button onClick={()=>eliminar(p.id)}>Eliminar</button>
-                            </div>
-                        </article>
+                        <ProyectoCard 
+                        key={p.id}
+                        proyecto={p}
+                        eliminar={eliminar}
+                        verDetalle={verDetalle}/>
                     ))}
+                </div>
+                <div id="detalle" className="detalle-container">
+                    <DetalleProyecto proyecto={proyectoSeleccionado}/>
                 </div>
             </section>
         </div>
