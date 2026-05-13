@@ -1,0 +1,42 @@
+const DetalleProyecto = ({proyecto}) =>{
+    if(!proyecto){
+        return <p>Seleccione un proyecto para ver el detalle</p>
+    }
+    const {
+        titulo,
+        categoria,
+        estado,
+        descripcion,
+        recursos,
+        equipo
+    }=proyecto
+    return (
+        <div className="detalle-proyecto">
+            <h2>{titulo}</h2>
+            <p> <strong>Categoria:</strong>
+            </p>{categoria}
+            <p>
+                <strong>Estado:</strong> {estado}
+            </p>
+            <h3>Descripcion:</h3>
+            <p>{descripcion}</p>
+            <h3>Recursos:</h3>
+
+            <ul>
+                <li>PDF: {recursos.pdf}</li>
+                <li>Drive: {recursos.drive}</li>
+                <li>GitHub: {recursos.github}</li>
+            </ul>
+            <h3>Equipo</h3>
+            <ul>
+                {equipo.map((miembro, index)=>(
+                    <li key={index}>
+                        {miembro.nombre} - {miembro.rol}
+                    </li>
+
+                ))}
+            </ul>
+        </div>
+    )
+}
+export default DetalleProyecto;

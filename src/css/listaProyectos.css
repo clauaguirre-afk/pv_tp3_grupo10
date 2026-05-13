@@ -1,4 +1,4 @@
-.titilo{
+.titulo{
     color: rgb(189, 26, 26);
 }
 .formulario{
@@ -58,4 +58,65 @@
     border-radius: 20px;
     margin-bottom: 10px;
     font-size: 14px;
+}
+.contenedor-proyectos{
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.lista-proyectos{
+    width: 50%;
+}
+
+.detalle-container{
+  width: 50%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.detalle-proyecto h2{
+    margin-bottom: 10px;
+    color: #1e293b;
+}
+
+.detalle-proyecto p{
+    margin: 10px 0;
+}
+
+.detalle-proyecto ul{
+    padding-left: 20px;
+}
+
+.detalle-proyecto li{
+    margin-bottom: 6px;
+}
+.botones{
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.btn-eliminar{
+  background-color: crimson;
+}
+
+.btn-eliminar:hover{
+  background-color: rgb(170, 10, 42);
+}
+
+@media (max-width: 768px){
+
+  .contenedor-proyectos{
+    flex-direction: column;
+  }
+
+  .lista-proyectos,
+  .detalle-container{
+    width: 100%;
+  }
+
 }
