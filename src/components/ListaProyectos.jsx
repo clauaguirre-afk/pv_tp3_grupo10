@@ -13,6 +13,12 @@ const ListaProyectos =()=>{
     const [titulo, setTitulo] = useState("");
     const [categoria, setCategoria] = useState("");
     const [estado, setEstado] = useState("");
+    const [descripcion, setDescripcion] = useState("");
+    const [pdf, setPdf] = useState("");
+    const [drive, setDrive] = useState("");
+    const [github, setGithub] = useState("");
+    const [integrante, setIntegrante] = useState("");
+    const [rol, setRol] = useState("");
     const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null);
 
     const eliminar = (id) => {
@@ -41,12 +47,21 @@ const ListaProyectos =()=>{
         if (titulo.trim() === "" || categoria.trim() === "" || estado.trim() === ""){alert("Completa todos los campos");
         return;}
         const nuevoProyecto = {
-            id: Date.now(), titulo, categoria, estado, descripcion:" ", recursos:{pdf:"", drive:"", github:""}, equipo:[]};
+            id: Date.now(), titulo, categoria, estado, 
+            descripcion: [ descripcion, "Proyecto agregado desde el formulario."],
+            recursos: { pdf, drive, github },
+            equipo: [{ nombre: integrante, rol: rol }]};
         proyectoService.agregarProyecto(nuevoProyecto);
         setProyectos(proyectoService.obtenerProyectos());
         setTitulo("");
         setCategoria("");
         setEstado("");
+        setDescripcion("");
+        setPdf("");
+        setDrive("");
+        setGithub("");
+        setIntegrante("");
+        setRol("");
     };
 
     return(
@@ -54,9 +69,15 @@ const ListaProyectos =()=>{
             <h2 className="titulo">Gestion de Proyecto Educativos</h2>
 
             <div className="formulario">
-               <input type="text" placeholder="Título" value={titulo} onChange={(e) => setTitulo(e.target.value)}/>
-               <input type="text" placeholder="Categoría" value={categoria} onChange={(e) => setCategoria(e.target.value)}/>
-               <input type="text" placeholder="Estado" value={estado} onChange={(e) => setEstado(e.target.value)}/>
+                <input type="text" placeholder="Título" value={titulo} onChange={(e) => setTitulo(e.target.value)}/>
+                <input type="text" placeholder="Categoría" value={categoria} onChange={(e) => setCategoria(e.target.value)}/>
+                <input type="text" placeholder="Estado" value={estado} onChange={(e) => setEstado(e.target.value)}/>
+                <input type="text" placeholder="Descripción" value={descripcion} onChange={(e) => setDescripcion(e.target.value)}/>
+                <input type="text" placeholder="PDF" value={pdf} onChange={(e) => setPdf(e.target.value)}/>
+                <input type="text" placeholder="Drive" value={drive} onChange={(e) => setDrive(e.target.value)}/>
+                <input type="text" placeholder="GitHub" value={github} onChange={(e) => setGithub(e.target.value)}/>
+                <input type="text" placeholder="Integrante" value={integrante} onChange={(e) => setIntegrante(e.target.value)}/>
+                <input type="text" placeholder="Rol" value={rol} onChange={(e) => setRol(e.target.value)}/>
                <button onClick={agregar}>Agregar Proyecto</button>
             </div>
             <input type="text" placeholder="Buscar proyecto..." value={busqueda} onChange={(e) => buscar(e.target.value)}/>

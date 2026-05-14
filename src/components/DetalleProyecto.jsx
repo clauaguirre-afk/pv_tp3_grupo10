@@ -13,13 +13,15 @@ const DetalleProyecto = ({proyecto}) =>{
     return (
         <div className="detalle-proyecto">
             <h2>{titulo}</h2>
-            <p> <strong>Categoria:</strong>
-            </p>{categoria}
+            <p> <strong>Categoria:</strong>{categoria}
+            </p>
             <p>
                 <strong>Estado:</strong> {estado}
             </p>
             <h3>Descripcion:</h3>
-            <p>{descripcion}</p>
+            {descripcion.map((texto, index) => (
+                <p key={index}>{texto}</p>
+            ))}
             <h3>Recursos:</h3>
 
             <ul>

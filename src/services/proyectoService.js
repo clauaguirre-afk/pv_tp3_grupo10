@@ -5,7 +5,9 @@ const proyectoService = (()=>{/*funcion con arreglo*/
             titulo: "Programacion Visual", 
             categoria: "Web", 
             estado: "En curso",
-            descripcion:"Proyecto realizado en React para aprender componentes y props. Incluye manejo de estados y renderizado dinamico",
+            descripcion: [
+                "Proyecto realizado en React para aprender componentes y props.",
+                "Incluye manejo de estados, renderizado dinámico y comunicación entre componentes utilizando props."],
             recursos:{
                 pdf:"manual-react.pdf",
                 drive:"drive.google.com/react",
@@ -30,7 +32,9 @@ const proyectoService = (()=>{/*funcion con arreglo*/
             titulo: "Base de Datos II", 
             categoria: "PDF", 
             estado: "Finalizado",
-            descripcion:"Proyecto enfocado en realizar una Base de Datos relacionales y consultas SQL avanzadas",
+            descripcion: [
+                "Proyecto orientado al diseño y administración de bases de datos relacionales utilizando consultas SQL y modelado entidad-relación.",
+                "Se trabajó con creación de tablas, relaciones entre entidades, consultas avanzadas y optimización de estructuras de almacenamiento de información."],
             recursos:{
                 pdf:"bd.pdf",
                 drive:"drive.google.com/bd",
@@ -55,7 +59,9 @@ const proyectoService = (()=>{/*funcion con arreglo*/
             titulo: "Redes I", 
             categoria: "PDF", 
             estado: "En curso",
-            descripcion:"Proyecto orientado al estudio de redes informaticas y configuraciones basica de dispositivo. Se trabajo con direcciones IP, mascaras de subred y simulaciones en Cisco Packet Tracer para verificar la conectividad entre equipos",
+            descripcion: [
+                "Proyecto enfocado en el análisis y configuración de redes informáticas utilizando simulaciones en Cisco Packet Tracer.",
+                "Se realizaron prácticas de direccionamiento IP, configuración de dispositivos de red y verificación de conectividad mediante herramientas de diagnóstico."],
             recursos:{
                 pdf:"redes.pdf",
                 drive:"drive.google.com/redes",
@@ -79,7 +85,9 @@ const proyectoService = (()=>{/*funcion con arreglo*/
             id: 4,
             titulo:"Programacion Estructurada", categoria:"Web", 
             estado:"Finalizado",
-            descripcion:"Proyecto enfocado en la resolucion de problema mediante algoritmos y pseudocodigo. Se trabajo con estructura condicionales, ciclos repetitivos y validacion de datos utilizando c++",
+            descripcion: [
+                "Proyecto destinado al aprendizaje de lógica de programación y resolución de problemas mediante algoritmos estructurados.",
+                "Se utilizaron estructuras condicionales, ciclos repetitivos y funciones en C++ para desarrollar soluciones eficientes a distintos ejercicios prácticos."],
             recursos:{
                 pdf:"estructura.pdf",
                 drive:"drive.google.com/estructura",
@@ -104,7 +112,9 @@ const proyectoService = (()=>{/*funcion con arreglo*/
             titulo:"Ingles", 
             categoria:"PDF", 
             estado:"En curso",
-            descripcion:"Proyecto orientado al desarrollo de habilidades de lectura, escritura y comprension en ingles tecnico. Se realizaron actividades de vocabularios, gramatica, preguntas en presente simple y comprension de texto relacionados con informatica",
+            descripcion: [
+                "Proyecto orientado al fortalecimiento de habilidades de comprensión y escritura en inglés técnico aplicado a informática.",
+                "Se trabajó con vocabulario especializado, lectura de documentación técnica y ejercicios de gramática relacionados con el ámbito tecnológico."],
             recursos:{
                 pdf:"ingles.pdf",
                 drive:"drive.google.com/ingles",
