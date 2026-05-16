@@ -53,6 +53,18 @@ const ListaProyectos = () => {
         }
     };
 
+    const verDetalle = (proyecto) => {
+        setProyectoSeleccionado(proyecto);
+        setTimeout(() => {
+            const detalleDiv = document.getElementById("detalle");
+            if (detalleDiv) {
+                detalleDiv.scrollIntoView({
+                    behavior: "smooth"
+                });
+            }
+        }, 100);
+    };
+
     const buscar = (texto) => {
         setBusqueda(texto);
         if (texto === "") {
