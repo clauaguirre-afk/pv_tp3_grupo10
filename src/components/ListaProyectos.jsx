@@ -22,8 +22,21 @@ const ListaProyectos =()=>{
     const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null);
 
     const eliminar = (id) => {
-        proyectoService.eliminarProyecto(id);
-        setProyectos(proyectoService.obtenerProyectos());
+        const confirmar = window.confirm("¿Estás seguro de eliminar este proyecto?");
+        if (confirmar) {
+            const tarjeta = document.getElementById(`tarjeta-${id}`);
+            if (tarjeta) {
+                tarjeta.classList.add("card-fade-out");
+                setTimeout(() => {
+                    proyectoService.eliminarProyecto(id);
+                    setProyectos(proyectoService.obtenerProyectos());
+                    if (proyectoSeleccionado && proyectoSeleccionado.id === id) {
+                        setProyectoSeleccionado(null);
+                    }
+                }, 300);
+            }
+            
+        }
     };
     const verDetalle =(proyecto) => {
         setProyectoSeleccionado(proyecto)
@@ -80,16 +93,21 @@ const ListaProyectos =()=>{
                 <input type="text" placeholder="Rol" value={rol} onChange={(e) => setRol(e.target.value)}/>
                <button onClick={agregar}>Agregar Proyecto</button>
             </div>
-            <input type="text" placeholder="Buscar proyecto..." value={busqueda} onChange={(e) => buscar(e.target.value)}/>
+
+            <div className="buscador">
+                <input type="text" placeholder="Buscar proyecto..." value={busqueda} onChange={(e) => buscar(e.target.value)}/>
+            </div>
 
             <section className="contenedor-proyectos">
                 <div className="lista-proyectos">
                     {proyectos.map(p =>(
-                        <ProyectoCard 
-                        key={p.id}
-                        proyecto={p}
-                        eliminar={eliminar}
-                        verDetalle={verDetalle}/>
+                        <div id={`tarjeta-${p.id}`} key={p.id} className="tarjeta-animacion-container">
+                            <ProyectoCard 
+                                proyecto={p}
+                                eliminar={eliminar}
+                                verDetalle={verDetalle}
+                            />
+                        </div>
                     ))}
                 </div>
                 <div id="detalle" className="detalle-container">
