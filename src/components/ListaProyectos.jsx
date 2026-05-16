@@ -3,100 +3,139 @@ import proyectoService from "../services/proyectoService";
 import "../css/listaProyectos.css";
 import ProyectoCard from "./ProyectoCard.jsx";
 import DetalleProyecto from "./DetalleProyecto.jsx";
-const ListaProyectos =()=>{
 
-    const [proyectos, setProyectos] = useState(
-        proyectoService.obtenerProyectos());
-    
+const ListaProyectos = () => {
+    const [proyectos, setProyectos] = useState(proyectoService.obtenerProyectos());
     const [busqueda, setBusqueda] = useState("");
-
-    const [titulo, setTitulo] = useState("");
-    const [categoria, setCategoria] = useState("");
-    const [estado, setEstado] = useState("");
-    const [descripcion, setDescripcion] = useState("");
-    const [pdf, setPdf] = useState("");
-    const [drive, setDrive] = useState("");
-    const [github, setGithub] = useState("");
-    const [integrante, setIntegrante] = useState("");
-    const [rol, setRol] = useState("");
     const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null);
+
+    // Un solo objeto de estado para el formulario
+    const [formulario, setFormulario] = useState({
+        titulo: "",
+        categoria: "",
+        estado: "",
+        descripcion1: "", 
+        descripcion2: "", 
+        pdf: "",
+        drive: "",
+        github: "",
+        integrante: "",
+        rol: ""
+    });
+
+    // Desestructuración aplicada al manejo del estado del formulario
+    const { titulo, categoria, estado, descripcion1, descripcion2, pdf, drive, github, integrante, rol } = formulario;
+
+    // Manejador único para actualizar las propiedades del formulario dinámicamente
+    const registrarCambio = (e) => {
+        const { name, value } = e.target;
+        setFormulario({
+            ...formulario,
+            [name]: value
+        });
+    };
 
     const eliminar = (id) => {
         proyectoService.eliminarProyecto(id);
         setProyectos(proyectoService.obtenerProyectos());
+
+        //Si el proyecto eliminado es el que se estaba viendo, cerramos el detalle
+        if (proyectoSeleccionado && proyectoSeleccionado.id === id) {
+            setProyectoSeleccionado(null);
+        }
     };
-    const verDetalle =(proyecto) => {
-        setProyectoSeleccionado(proyecto)
-        setTimeout(()=>{
-            document
-            .getElementById("detalle")
-            .scrollIntoView({
-                behavior:"smooth"
-            })
-        },100)
-    }
+
+    const verDetalle = (proyecto) => {
+        setProyectoSeleccionado(proyecto);
+        setTimeout(() => {
+            document.getElementById("detalle").scrollIntoView({
+                behavior: "smooth"
+            });
+        }, 100);
+    };
+
     const buscar = (texto) => {
         setBusqueda(texto);
         if (texto === "") {
-           setProyectos(proyectoService.obtenerProyectos());
+            setProyectos(proyectoService.obtenerProyectos());
         } else {
             setProyectos(proyectoService.buscarProyecto(texto));
         }
     };
+
     const agregar = () => {
-        if (titulo.trim() === "" || categoria.trim() === "" || estado.trim() === ""){alert("Completa todos los campos");
-        return;}
+        if (titulo.trim() === "" || categoria.trim() === "" || estado.trim() === "") {
+            alert("Completa todos los campos principales");
+            return;
+        }
+
+        // Estructura completa y extendida del nuevo proyecto, incluyendo los dos párrafos de descripción
         const nuevoProyecto = {
-            id: Date.now(), titulo, categoria, estado, 
-            descripcion: [ descripcion, "Proyecto agregado desde el formulario."],
+            id: Date.now(),
+            titulo,
+            categoria,
+            estado,
+            descripcion: [descripcion1, descripcion2], // Dos párrafos
             recursos: { pdf, drive, github },
-            equipo: [{ nombre: integrante, rol: rol }]};
+            equipo: [{ nombre: integrante, rol: rol }]
+        };
+
         proyectoService.agregarProyecto(nuevoProyecto);
         setProyectos(proyectoService.obtenerProyectos());
-        setTitulo("");
-        setCategoria("");
-        setEstado("");
-        setDescripcion("");
-        setPdf("");
-        setDrive("");
-        setGithub("");
-        setIntegrante("");
-        setRol("");
+
+        // Limpieza del formulario restableciendo el objeto inicial
+        setFormulario({
+            titulo: "",
+            categoria: "",
+            estado: "",
+            descripcion1: "",
+            descripcion2: "",
+            pdf: "",
+            drive: "",
+            github: "",
+            integrante: "",
+            rol: ""
+        });
     };
 
-    return(
+    return (
         <div>
-            <h2 className="titulo">Gestion de Proyecto Educativos</h2>
+            <h2 className="titulo">Gestión de Proyectos Educativos</h2>
 
+            {/* Agregamos el atributo 'name' y vinculamos 'registrarCambio' para que funcione el objeto de estado */}
             <div className="formulario">
-                <input type="text" placeholder="Título" value={titulo} onChange={(e) => setTitulo(e.target.value)}/>
-                <input type="text" placeholder="Categoría" value={categoria} onChange={(e) => setCategoria(e.target.value)}/>
-                <input type="text" placeholder="Estado" value={estado} onChange={(e) => setEstado(e.target.value)}/>
-                <input type="text" placeholder="Descripción" value={descripcion} onChange={(e) => setDescripcion(e.target.value)}/>
-                <input type="text" placeholder="PDF" value={pdf} onChange={(e) => setPdf(e.target.value)}/>
-                <input type="text" placeholder="Drive" value={drive} onChange={(e) => setDrive(e.target.value)}/>
-                <input type="text" placeholder="GitHub" value={github} onChange={(e) => setGithub(e.target.value)}/>
-                <input type="text" placeholder="Integrante" value={integrante} onChange={(e) => setIntegrante(e.target.value)}/>
-                <input type="text" placeholder="Rol" value={rol} onChange={(e) => setRol(e.target.value)}/>
-               <button onClick={agregar}>Agregar Proyecto</button>
+                <input type="text" name="titulo" placeholder="Título" value={titulo} onChange={registrarCambio} />
+                <input type="text" name="categoria" placeholder="Categoría" value={categoria} onChange={registrarCambio} />
+                <input type="text" name="estado" placeholder="Estado" value={estado} onChange={registrarCambio} />
+                <input type="text" name="descripcion1" placeholder="Descripción 1" value={descripcion1} onChange={registrarCambio} />
+                <input type="text" name="descripcion2" placeholder="Descripción 2" value={descripcion2} onChange={registrarCambio} />
+                <input type="text" name="pdf" placeholder="PDF" value={pdf} onChange={registrarCambio} />
+                <input type="text" name="drive" placeholder="Drive" value={drive} onChange={registrarCambio} />
+                <input type="text" name="github" placeholder="GitHub" value={github} onChange={registrarCambio} />
+                <input type="text" name="integrante" placeholder="Integrante" value={integrante} onChange={registrarCambio} />
+                <input type="text" name="rol" placeholder="Rol" value={rol} onChange={registrarCambio} />
+                <button onClick={agregar}>Agregar Proyecto</button>
             </div>
-            <input type="text" placeholder="Buscar proyecto..." value={busqueda} onChange={(e) => buscar(e.target.value)}/>
+
+            <input type="text" placeholder="Buscar proyecto..." value={busqueda} onChange={(e) => buscar(e.target.value)} />
 
             <section className="contenedor-proyectos">
                 <div className="lista-proyectos">
-                    {proyectos.map(p =>(
-                        <ProyectoCard 
-                        key={p.id}
-                        proyecto={p}
-                        eliminar={eliminar}
-                        verDetalle={verDetalle}/>
+                    {proyectos.map(p => (
+                        <ProyectoCard
+                            key={p.id}
+                            proyecto={p}
+                            eliminar={eliminar}
+                            verDetalle={verDetalle}
+                        />
                     ))}
                 </div>
                 <div id="detalle" className="detalle-container">
-                    <DetalleProyecto proyecto={proyectoSeleccionado}/>
+                    <DetalleProyecto proyecto={proyectoSeleccionado} />
                 </div>
             </section>
         </div>
     );
-}
+};
+
 export default ListaProyectos;
