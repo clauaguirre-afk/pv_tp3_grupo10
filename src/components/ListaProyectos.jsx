@@ -9,7 +9,6 @@ const ListaProyectos = () => {
     const [busqueda, setBusqueda] = useState("");
     const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null);
 
-    // Un solo objeto de estado para el formulario
     const [formulario, setFormulario] = useState({
         titulo: "",
         categoria: "",
@@ -23,10 +22,8 @@ const ListaProyectos = () => {
         rol: ""
     });
 
-    // Desestructuración aplicada al manejo del estado del formulario
     const { titulo, categoria, estado, descripcion1, descripcion2, pdf, drive, github, integrante, rol } = formulario;
 
-    // Manejador único para actualizar las propiedades del formulario dinámicamente
     const registrarCambio = (e) => {
         const { name, value } = e.target;
         setFormulario({
@@ -80,7 +77,6 @@ const ListaProyectos = () => {
             return;
         }
 
-        // Estructura completa y extendida del nuevo proyecto, incluyendo los dos párrafos de descripción
         const nuevoProyecto = {
             id: Date.now(),
             titulo,
@@ -94,7 +90,6 @@ const ListaProyectos = () => {
         proyectoService.agregarProyecto(nuevoProyecto);
         setProyectos(proyectoService.obtenerProyectos());
 
-        // Limpieza del formulario restableciendo el objeto inicial
         setFormulario({
             titulo: "",
             categoria: "",
@@ -113,7 +108,6 @@ const ListaProyectos = () => {
         <div>
             <h2 className="titulo">Gestión de Proyectos Educativos</h2>
 
-            {/* Agregamos el atributo 'name' y vinculamos 'registrarCambio' para que funcione el objeto de estado */}
             <div className="formulario">
                 <input type="text" name="titulo" placeholder="Título" value={titulo} onChange={registrarCambio} />
                 <input type="text" name="categoria" placeholder="Categoría" value={categoria} onChange={registrarCambio} />

@@ -25,6 +25,10 @@ const proyectoService = (()=>{/*funcion con arreglo*/
             {
                 nombre:"Florencia Maria Lujan Cordoba",
                 rol: "Diseño y Desarrollo"
+            },
+            {
+                nombre:"Flores aparicio daniel jesus",
+                rol: "Diseño y Desarrollo"
             }]
         },
         {
@@ -51,6 +55,10 @@ const proyectoService = (()=>{/*funcion con arreglo*/
             },
             {
                 nombre:"Florencia Maria Lujan Cordoba",
+                rol: "Diseño y Desarrollo"
+            },
+            {
+                nombre:"Flores aparicio daniel jesus",
                 rol: "Diseño y Desarrollo"
             }]
         },
@@ -79,6 +87,10 @@ const proyectoService = (()=>{/*funcion con arreglo*/
             {
                 nombre:"Florencia Maria Lujan Cordoba",
                 rol: "Diseño y Desarrollo"
+            },
+            {
+                nombre:"Flores aparicio daniel jesus",
+                rol: "Diseño y Desarrollo"
             }]
         },
         {
@@ -104,6 +116,10 @@ const proyectoService = (()=>{/*funcion con arreglo*/
             },
             {
                 nombre:"Florencia Maria Lujan Cordoba",
+                rol: "Diseño y Desarrollo"
+            },
+            {
+                nombre:"Flores aparicio daniel jesus",
                 rol: "Diseño y Desarrollo"
             }]
         },
@@ -131,6 +147,10 @@ const proyectoService = (()=>{/*funcion con arreglo*/
             },
             {
                 nombre:"Florencia Maria Lujan Cordoba",
+                rol: "Diseño y Desarrollo"
+            },
+            {
+                nombre:"Flores aparicio daniel jesus",
                 rol: "Diseño y Desarrollo"
             }]
         }
