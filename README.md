@@ -1,7 +1,5 @@
 # Integrantes del Grupo N°10 y sus Usuario de github: 
-- YESICA MICAELA SORIA Username github: Micaela-YSoria 
 - CLAUDIO EMANUEL AGUIRRE GOMEZ Username github: clauguirre-afk 
-- ALBERTO OMAR CONDORI Username github: CONDORI-ALBERTO 
 - FLORENCIA MARIA LUJAN CORDOBA Username github: cordobaflorencia
 - FLORES APARICIO DANIEL JESUS: dani26-byte
 - RUIZ ALBARO SAMUEL: samuelxd14
