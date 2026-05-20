@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import RegistroActividad from "./RegistroActividad";
 import proyectoService from "../services/proyectoService";
 import "../css/listaProyectos.css";
 import ProyectoCard from "./ProyectoCard.jsx";
@@ -8,6 +9,7 @@ const ListaProyectos = () => {
     const [proyectos, setProyectos] = useState(proyectoService.obtenerProyectos());
     const [busqueda, setBusqueda] = useState("");
     const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null);
+    const [ultimaActividad, setUltimaActividad] = useState("Sin modificaciones todavía");
 
     const [formulario, setFormulario] = useState({
         titulo: "",
@@ -103,7 +105,10 @@ const ListaProyectos = () => {
             rol: ""
         });
     };
-
+    useEffect(() => {
+        const fecha = new Date().toLocaleString();
+        setUltimaActividad(fecha);
+    }, [proyectos]);
     return (
         <div>
             <h2 className="titulo">Gestión de Proyectos Educativos</h2>
@@ -142,6 +147,7 @@ const ListaProyectos = () => {
                     <DetalleProyecto proyecto={proyectoSeleccionado} />
                 </div>
             </section>
+            <RegistroActividad ultimaActividad={ultimaActividad}/>
         </div>
     );
 };
