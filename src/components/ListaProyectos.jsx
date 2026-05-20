@@ -106,9 +106,9 @@ const ListaProyectos = () => {
         });
     };
     useEffect(() => {
-        const fecha = new Date().toLocaleString();
-        setUltimaActividad(fecha);
-    }, [proyectos]);
+        const fechaActual = new Date().toLocaleString();
+        setUltimaActividad(fechaActual);
+    }, [proyectos.length]);
     return (
         <div>
             <h2 className="titulo">Gestión de Proyectos Educativos</h2>
