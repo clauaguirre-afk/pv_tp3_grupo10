@@ -3,6 +3,7 @@
 - FLORENCIA MARIA LUJAN CORDOBA Username github: cordobaflorencia
 - FLORES APARICIO DANIEL JESUS: dani26-byte
 - RUIZ ALBARO SAMUEL: samuelxd14
+- ARGOTA MARTIN RAMON: martin-argota-2026
 
 # Descripcion del Proyecto:
 Este proyecto consiste de una plataforma de Gestion de Proyectos Educativos desarrollada previamente en HTML/CSS hacia REACT utilizando VITE. La aplicacion permite visualizar, agregar, buscar y eliminar proyectos, aplicando los conceptos basicos del desarrollo de intefaces dinamica con React.
