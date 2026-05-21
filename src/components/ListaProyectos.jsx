@@ -106,8 +106,19 @@ const ListaProyectos = () => {
         });
     };
     useEffect(() => {
-        const fechaActual = new Date().toLocaleString();
-        setUltimaActividad(fechaActual);
+        const fecha = new Date();
+        const dia = fecha.toLocaleDateString('es-AR', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric'
+        });
+        const hora = fecha.toLocaleTimeString('es-AR', { 
+            hour: '2-digit', 
+            minute: '2-digit',
+            hour12: false
+        });
+        const mensaje = `Última actualización de la lista: ${dia} a las ${hora} hs.`;
+        setUltimaActividad(mensaje);
     }, [proyectos.length]);
     return (
         <div>
