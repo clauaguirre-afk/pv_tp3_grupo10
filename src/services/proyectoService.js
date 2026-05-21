@@ -27,7 +27,7 @@ const proyectoService = (()=>{/*funcion con arreglo*/
                 rol: "Diseño y Desarrollo"
             },
             {
-                nombre:"Flores aparicio daniel jesus",
+                nombre:"Albaro Samuel Ruiz",
                 rol: "Diseño y Desarrollo"
             }]
         },
@@ -58,7 +58,7 @@ const proyectoService = (()=>{/*funcion con arreglo*/
                 rol: "Diseño y Desarrollo"
             },
             {
-                nombre:"Flores aparicio daniel jesus",
+                nombre:"Albaro Samuel Ruiz",
                 rol: "Diseño y Desarrollo"
             }]
         },
@@ -89,7 +89,7 @@ const proyectoService = (()=>{/*funcion con arreglo*/
                 rol: "Diseño y Desarrollo"
             },
             {
-                nombre:"Flores aparicio daniel jesus",
+                nombre:"Albaro Samuel Ruiz",
                 rol: "Diseño y Desarrollo"
             }]
         },
@@ -119,7 +119,7 @@ const proyectoService = (()=>{/*funcion con arreglo*/
                 rol: "Diseño y Desarrollo"
             },
             {
-                nombre:"Flores aparicio daniel jesus",
+                nombre:"Albaro Samuel Ruiz",
                 rol: "Diseño y Desarrollo"
             }]
         },
@@ -150,7 +150,7 @@ const proyectoService = (()=>{/*funcion con arreglo*/
                 rol: "Diseño y Desarrollo"
             },
             {
-                nombre:"Flores aparicio daniel jesus",
+                nombre:"Albaro Samuel Ruiz",
                 rol: "Diseño y Desarrollo"
             }]
         }
