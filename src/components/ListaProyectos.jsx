@@ -175,7 +175,7 @@ const ListaProyectos = () => {
 
     useEffect(()=>{
 
-        if(
+         if(
             primeraCarga.current
         ){
 
