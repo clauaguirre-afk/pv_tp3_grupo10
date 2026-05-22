@@ -14,9 +14,9 @@ const ListaProyectos = () => {
 
     const [busqueda, setBusqueda] = useState("");
     const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null);
-    const [ultimaActividad, setUltimaActividad] = useState("");
+    const [ultimaActividad, setUltimaActividad] = useState(null);
 
-    const primeraCarga = useRef(true);
+    const primeraCarga = useRef(0);
 
     const eliminar = (id) => {
 
@@ -84,24 +84,8 @@ const ListaProyectos = () => {
 
     };
 
-    const buscar=(texto)=>{
-
+    const buscar = (texto) => {
         setBusqueda(texto);
-
-        if(texto===""){
-
-            setProyectos(
-                proyectoService.obtenerProyectos()
-            );
-
-        }else{
-
-            setProyectos(
-                proyectoService.buscarProyecto(texto)
-            );
-
-        }
-
     };
 
     const agregar=(formulario)=>{
@@ -174,19 +158,11 @@ const ListaProyectos = () => {
     };
 
     useEffect(()=>{
-
-         if(
-            primeraCarga.current
-        ){
-
-            primeraCarga.current=false;
-
+        primeraCarga.current += 1;
+        if(primeraCarga.current <= 2){
             return;
-
         }
-
-        const fecha=
-        new Date();
+        const fecha = new Date();
 
         const dia=
         fecha.toLocaleDateString(
@@ -207,12 +183,16 @@ const ListaProyectos = () => {
                 hour12:false
             }
         );
-
+        console.log({dia,hora});
         setUltimaActividad(
             `Última actualización de la lista: ${dia} a las ${hora} hs.`
         );
 
     },[proyectos]);
+
+    const proyectosMostrar = busqueda === "" ? proyectos : proyectos.filter(
+        p => p.titulo.toLowerCase().includes(busqueda.toLowerCase())
+    );
 
     return(
 
@@ -241,12 +221,11 @@ const ListaProyectos = () => {
 
             </div>
 
-            <section className="contenedor-proyectos">
-
+            <section className={`contenedor-proyectos ${proyectoSeleccionado ? "con-detalle" : "sin-detalle"}`}>
                 <div className="lista-proyectos">
 
                     {
-                        proyectos.map(
+                        proyectosMostrar.map(
                             p=>(
                             <div
                             id={`tarjeta-${p.id}`}
@@ -280,12 +259,8 @@ const ListaProyectos = () => {
 
             </section>
 
-            {
-                ultimaActividad && (
-
-                <RegistroActividad
-                ultimaActividad={ultimaActividad}
-                />
+            {ultimaActividad && (
+                <RegistroActividad ultimaActividad={ultimaActividad}/>
 
                 )
             }
