@@ -1,6 +1,12 @@
-const DetalleProyecto = ({proyecto}) =>{
+import { useParams } from "react-router-dom";
+import proyectoService from "../services/proyectoService";
+const DetalleProyecto = () =>{
+    const {id}=useParams();
+    const proyecto=proyectoService
+     .obtenerProyectos()
+     .find(p => p.id === Number(id))
     if(!proyecto){
-        return <p>Seleccione un proyecto para ver el detalle</p>
+        return <p>Proyecto no encontrado</p>
     }
     const {
         titulo,
