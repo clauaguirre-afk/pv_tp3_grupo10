@@ -18,7 +18,7 @@ const proyectoService = (()=>{/*funcion con arreglo*/
                 rol: "Diseño y Desarrollo"
             },
             {
-                nombre:"Yesica Micaela Soria",
+                nombre:"Flores Aparicio Daniel Jesus",
                 rol: "Diseño y Desarrollo"
 
             },
@@ -29,7 +29,12 @@ const proyectoService = (()=>{/*funcion con arreglo*/
             {
                 nombre:"Albaro Samuel Ruiz",
                 rol: "Diseño y Desarrollo"
-            }]
+            },
+            {
+                nombre:"Argota Martin Ramon",
+                rol: "Diseño y Desarrollo"
+            }
+        ]
         },
         {
             id: 2,
@@ -44,12 +49,12 @@ const proyectoService = (()=>{/*funcion con arreglo*/
                 drive:"drive.google.com/bd",
                 github:"github.com/bd"
             },
-            equipo: [{
+           equipo: [{
                 nombre: "Claudio Emanuel Agurres Gomez",
                 rol: "Diseño y Desarrollo"
             },
             {
-                nombre:"Yesica Micaela Soria",
+                nombre:"Flores Aparicio Daniel Jesus",
                 rol: "Diseño y Desarrollo"
 
             },
@@ -60,7 +65,12 @@ const proyectoService = (()=>{/*funcion con arreglo*/
             {
                 nombre:"Albaro Samuel Ruiz",
                 rol: "Diseño y Desarrollo"
-            }]
+            },
+            {
+                nombre:"Argota Martin Ramon",
+                rol: "Diseño y Desarrollo"
+            }
+        ]
         },
         {
             id: 3,
@@ -80,7 +90,7 @@ const proyectoService = (()=>{/*funcion con arreglo*/
                 rol: "Diseño y Desarrollo"
             },
             {
-                nombre:"Yesica Micaela Soria",
+                nombre:"Flores Aparicio Daniel Jesus",
                 rol: "Diseño y Desarrollo"
 
             },
@@ -91,7 +101,12 @@ const proyectoService = (()=>{/*funcion con arreglo*/
             {
                 nombre:"Albaro Samuel Ruiz",
                 rol: "Diseño y Desarrollo"
-            }]
+            },
+            {
+                nombre:"Argota Martin Ramon",
+                rol: "Diseño y Desarrollo"
+            }
+        ]
         },
         {
             id: 4,
@@ -110,7 +125,7 @@ const proyectoService = (()=>{/*funcion con arreglo*/
                 rol: "Diseño y Desarrollo"
             },
             {
-                nombre:"Yesica Micaela Soria",
+                nombre:"Flores Aparicio Daniel Jesus",
                 rol: "Diseño y Desarrollo"
 
             },
@@ -141,7 +156,7 @@ const proyectoService = (()=>{/*funcion con arreglo*/
                 rol: "Diseño y Desarrollo"
             },
             {
-                nombre:"Yesica Micaela Soria",
+                nombre:"Flores Aparicio Daniel Jesus",
                 rol: "Diseño y Desarrollo"
 
             },
