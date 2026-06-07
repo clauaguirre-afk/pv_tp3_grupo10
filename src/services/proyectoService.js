@@ -18,7 +18,7 @@ const proyectoService = (()=>{/*funcion con arreglo*/
                 rol: "Diseño y Desarrollo"
             },
             {
-                nombre:"Yesica Micaela Soria",
+                nombre:"Flores Aparicio Daniel Jesus",
                 rol: "Diseño y Desarrollo"
 
             },
@@ -29,7 +29,12 @@ const proyectoService = (()=>{/*funcion con arreglo*/
             {
                 nombre:"Albaro Samuel Ruiz",
                 rol: "Diseño y Desarrollo"
-            }]
+            },
+            {
+                nombre:"Argota Martin Ramon",
+                rol: "Diseño y Desarrollo"
+            }
+        ]
         },
         {
             id: 2,
@@ -44,12 +49,12 @@ const proyectoService = (()=>{/*funcion con arreglo*/
                 drive:"drive.google.com/bd",
                 github:"github.com/bd"
             },
-            equipo: [{
+           equipo: [{
                 nombre: "Claudio Emanuel Agurres Gomez",
                 rol: "Diseño y Desarrollo"
             },
             {
-                nombre:"Yesica Micaela Soria",
+                nombre:"Flores Aparicio Daniel Jesus",
                 rol: "Diseño y Desarrollo"
 
             },
@@ -60,7 +65,12 @@ const proyectoService = (()=>{/*funcion con arreglo*/
             {
                 nombre:"Albaro Samuel Ruiz",
                 rol: "Diseño y Desarrollo"
-            }]
+            },
+            {
+                nombre:"Argota Martin Ramon",
+                rol: "Diseño y Desarrollo"
+            }
+        ]
         },
         {
             id: 3,
@@ -80,7 +90,7 @@ const proyectoService = (()=>{/*funcion con arreglo*/
                 rol: "Diseño y Desarrollo"
             },
             {
-                nombre:"Yesica Micaela Soria",
+                nombre:"Flores Aparicio Daniel Jesus",
                 rol: "Diseño y Desarrollo"
 
             },
@@ -91,7 +101,12 @@ const proyectoService = (()=>{/*funcion con arreglo*/
             {
                 nombre:"Albaro Samuel Ruiz",
                 rol: "Diseño y Desarrollo"
-            }]
+            },
+            {
+                nombre:"Argota Martin Ramon",
+                rol: "Diseño y Desarrollo"
+            }
+        ]
         },
         {
             id: 4,
@@ -110,7 +125,7 @@ const proyectoService = (()=>{/*funcion con arreglo*/
                 rol: "Diseño y Desarrollo"
             },
             {
-                nombre:"Yesica Micaela Soria",
+                nombre:"Flores Aparicio Daniel Jesus",
                 rol: "Diseño y Desarrollo"
 
             },
@@ -141,7 +156,7 @@ const proyectoService = (()=>{/*funcion con arreglo*/
                 rol: "Diseño y Desarrollo"
             },
             {
-                nombre:"Yesica Micaela Soria",
+                nombre:"Flores Aparicio Daniel Jesus",
                 rol: "Diseño y Desarrollo"
 
             },
@@ -172,10 +187,36 @@ const proyectoService = (()=>{/*funcion con arreglo*/
             p.titulo.toLowerCase().includes(texto.toLowerCase())
         )
     }
+
+    const obtenerIntegrantes = () => {
+        const mapaIntegrantes = new Map();
+        
+        proyectos.forEach(p => {
+            p.equipo.forEach(miembro => {
+                if (!mapaIntegrantes.has(miembro.nombre)) {
+                    mapaIntegrantes.set(miembro.nombre, {
+                        nombre: miembro.nombre,
+                        rolPrincipal: miembro.rol,
+                        proyectosAsignados: []
+                    });
+                }
+                mapaIntegrantes.get(miembro.nombre).proyectosAsignados.push({
+                    id: p.id,
+                    titulo: p.titulo,
+                    estado: p.estado,
+                    rolEnProyecto: miembro.rol
+                });
+            });
+        });
+        
+        return Array.from(mapaIntegrantes.values());
+    };
+
     return {obtenerProyectos,
         agregarProyecto,
         eliminarProyecto,
-        buscarProyecto
+        buscarProyecto,
+        obtenerIntegrantes
     };
 })();
 export default proyectoService;
