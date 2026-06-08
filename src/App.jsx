@@ -3,7 +3,7 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import Dashboard from './views/Dashboard';
 import PerfilUsuario from './views/PerfilUsuario';
-import DetalleProyecto from './components/DetalleProyecto';
+import DetalleProyecto from './views/DetalleProyecto';
 import { Routes, Route } from 'react-router-dom';
 const App =()=>{
   return(

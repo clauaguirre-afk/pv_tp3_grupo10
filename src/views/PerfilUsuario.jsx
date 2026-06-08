@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import proyectoService from '../services/proyectoService';
 import '../css/styles.css';
-
+import {Container, Paper, Typography, Box} from '@mui/material';
 const PerfilUsuario = () => {
   const [integrantes, setIntegrantes] = useState([]);
 
@@ -11,23 +11,26 @@ const PerfilUsuario = () => {
   }, []);
 
   return (
-    <div className="perfil-contenedor">
+    <Container maxWidth="md" sx={{ mt: 4 }}>
+      <Typography variant="h4" align="center" gutterBottom> Perfil de Usuario </Typography>
       {integrantes.map((integrante) => (
-        <div key={integrante.nombre} className="tarjeta-integrante">
+        <Paper key={integrante.nombre} elevation={3} sx={{ p: 3, mb: 2 }}>
+          <Box>
+            <Typography>
+              <strong>Nombre:</strong> {integrante.nombre}
+            </Typography>
 
-          <p className="tarjeta-texto">
-            <strong>Nombre Completo:</strong> {integrante.nombre}
-          </p>
-          
-          <p className="tarjeta-texto tarjeta-rol-contenedor">
-            <strong>Rol Principal:</strong> 
-            <span className="badge-rol">
-              {integrante.rolPrincipal}
-            </span>
-          </p>
-        </div>
+            <Typography>
+              <strong>Rol:</strong> {integrante.rolPrincipal}
+            </Typography>
+
+            <Typography>
+              <strong>Institución:</strong> {integrante.institucion}
+            </Typography>
+          </Box>
+        </Paper>
       ))}
-    </div>
+    </Container>
   );
 };
 

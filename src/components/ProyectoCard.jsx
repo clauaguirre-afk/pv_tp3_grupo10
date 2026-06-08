@@ -1,22 +1,37 @@
-import {Link} from 'react-router-dom';
-const ProyectoCard = ({proyecto, eliminar})=>{
-    const {id, titulo, categoria, estado}=proyecto;
+import { Link } from 'react-router-dom';
+import { Card, CardContent, Typography, Button } from "@mui/material";
+
+const ProyectoCard = ({ proyecto, eliminar }) => {
+
+    const { id, titulo, categoria, estado } = proyecto;
+
     return (
-        <article className="card">
-            <div className="card-content">
-                <h3>{titulo}</h3>
-                <span className={`badge ${estado === 'Finalizado' ? 'done' : 'process'}`}>
-                    {estado}
-                </span>
-                <p>
-                    <strong>Categoria:</strong> {categoria}
-                </p>
-                <Link className='ver-detalle' to={`/proyectos/${id}`}>
+        <Card>
+            <CardContent>
+
+                <Typography variant="h5" gutterBottom>
+                    {titulo}
+                </Typography>
+
+                <Typography>
+                    <strong>Estado:</strong> {estado}
+                </Typography>
+
+                <Typography sx={{ mb: 2 }}>
+                    <strong>Categoría:</strong> {categoria}
+                </Typography>
+
+                <Button component={Link} to={`/proyectos/${id}`} variant="contained" sx={{ mr: 1 }}>
                     Ver Detalle
-                </Link>
-                <button className="btn-eliminar" onClick={()=> eliminar(id)}>Eliminar</button>
-            </div>
-        </article>
-    )
-}
+                </Button>
+
+                <Button variant="outlined" color="error" onClick={() => eliminar(id)}>
+                    Eliminar
+                </Button>
+
+            </CardContent>
+        </Card>
+    );
+};
+
 export default ProyectoCard;
