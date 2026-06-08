@@ -1,9 +1,19 @@
-const RegistroActividad = ({ultimaActividad}) => {
+import Alert from "@mui/material/Alert";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+
+const RegistroActividad = ({ ultimaActividad }) => {
     return (
-        <div className="registro-actividad">
-            <h3>Registro de Actividad</h3>
-            <span>{ultimaActividad}</span>
-        </div>
+        <Box sx={{ mt: 3 }}>
+            <Typography variant="h6" gutterBottom>
+                Registro de Actividad
+            </Typography>
+
+            <Alert severity="info">
+                {ultimaActividad}
+            </Alert>
+        </Box>
     );
 };
+
 export default RegistroActividad;

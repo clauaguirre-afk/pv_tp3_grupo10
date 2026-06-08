@@ -1,157 +1,59 @@
 import { useState } from "react";
+import { Box, TextField, Button, MenuItem } from "@mui/material";
 
 const FormularioProyecto = ({ agregar }) => {
 
-const [formulario,setFormulario]=useState({
-titulo:"",
-categoria:"",
-estado:"",
-descripcion1:"",
-descripcion2:"",
-pdf:"",
-drive:"",
-github:"",
-integrante:"",
-rol:""
-});
+const [formulario,setFormulario]=useState({ titulo:"", categoria:"", estado:"", descripcion1:"", descripcion2:"", pdf:"", drive:"", github:"", integrante:"", rol:"" });
 
-const {
-titulo,
-categoria,
-estado,
-descripcion1,
-descripcion2,
-pdf,
-drive,
-github,
-integrante,
-rol
-}=formulario;
+const { titulo, categoria, estado, descripcion1, descripcion2, pdf, drive, github, integrante, rol}=formulario;
 
 const registrarCambio=(e)=>{
-
-const {name,value}=e.target;
-
-setFormulario({
-...formulario,
-[name]:value
-});
-
+    const {name,value}=e.target;
+    setFormulario({ ...formulario, [name]:value });
 };
 
 const enviarFormulario=(e)=>{
-
-e.preventDefault();
-
-agregar(formulario);
-
-setFormulario({
-titulo:"",
-categoria:"",
-estado:"",
-descripcion1:"",
-descripcion2:"",
-pdf:"",
-drive:"",
-github:"",
-integrante:"",
-rol:""
-});
-
+    e.preventDefault();
+    agregar(formulario);
+    setFormulario({ titulo:"", categoria:"", estado:"", descripcion1:"", descripcion2:"", pdf:"", drive:"", github:"", integrante:"", rol:""});
 };
-
 return(
 
-<form
-className="formulario"
-onSubmit={enviarFormulario}
->
+<Box component="form" className="formulario" onSubmit={enviarFormulario} sx={{ display: "flex",
+ flexDirection: "column", gap: 2, mt: 3 }}>
 
-<input
-type="text"
-name="titulo"
-placeholder="Título"
-value={titulo}
-onChange={registrarCambio}
-/>
+    <TextField label="Título" name="titulo" value={titulo} onChange={registrarCambio} fullWidth/>
 
-<input
-type="text"
-name="categoria"
-placeholder="Categoría"
-value={categoria}
-onChange={registrarCambio}
-/>
+    <TextField label="Categoría" name="categoria" value={categoria} onChange={registrarCambio} fullWidth/>
 
-<input
-type="text"
-name="estado"
-placeholder="Estado"
-value={estado}
-onChange={registrarCambio}
-/>
+    <TextField select label="Estado" name="estado" value={estado} onChange={registrarCambio} fullWidth>
+        <MenuItem value="En Curso">
+            En Curso
+        </MenuItem>
+        <MenuItem value="Finalizado">
+            Finalizado
+        </MenuItem>
+    </TextField>
 
-<input
-type="text"
-name="descripcion1"
-placeholder="Descripción 1"
-value={descripcion1}
-onChange={registrarCambio}
-/>
+    <TextField label="Descripción 1" name="descripcion1" value={descripcion1} onChange={registrarCambio} fullWidth/>
 
-<input
-type="text"
-name="descripcion2"
-placeholder="Descripción 2"
-value={descripcion2}
-onChange={registrarCambio}
-/>
+    <TextField label="Descripción 2" name="descripcion2" value={descripcion2} onChange={registrarCambio} fullWidth/>
 
-<input
-type="text"
-name="pdf"
-placeholder="PDF"
-value={pdf}
-onChange={registrarCambio}
-/>
+    <TextField label="PDF" name="pdf" value={pdf} onChange={registrarCambio} fullWidth/>
 
-<input
-type="text"
-name="drive"
-placeholder="Drive"
-value={drive}
-onChange={registrarCambio}
-/>
+    <TextField label="Drive" name="drive" value={drive} onChange={registrarCambio} fullWidth/>
 
-<input
-type="text"
-name="github"
-placeholder="GitHub"
-value={github}
-onChange={registrarCambio}
-/>
+    <TextField label="GitHub" name="github" value={github} onChange={registrarCambio} fullWidth/>
 
-<input
-type="text"
-name="integrante"
-placeholder="Integrante"
-value={integrante}
-onChange={registrarCambio}
-/>
+    <TextField label="Integrante" name="integrante" value={integrante} onChange={registrarCambio} fullWidth/>
 
-<input
-type="text"
-name="rol"
-placeholder="Rol"
-value={rol}
-onChange={registrarCambio}
-/>
+    <TextField label="Rol" name="rol" value={rol} onChange={registrarCambio} fullWidth/>
 
-<button type="submit">
-Agregar Proyecto
-</button>
+    <Button type="submit" variant="contained" size="large">
+        Agregar Proyecto
+    </Button>
 
-</form>
+</Box>
 
 )
 

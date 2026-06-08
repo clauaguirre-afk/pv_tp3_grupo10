@@ -4,7 +4,7 @@ const proyectoService = (()=>{/*funcion con arreglo*/
             id: 1,
             titulo: "Programacion Visual", 
             categoria: "Web", 
-            estado: "En curso",
+            estado: "En Curso",
             descripcion: [
                 "Proyecto realizado en React para aprender componentes y props.",
                 "Incluye manejo de estados, renderizado dinámico y comunicación entre componentes utilizando props."],
@@ -76,7 +76,7 @@ const proyectoService = (()=>{/*funcion con arreglo*/
             id: 3,
             titulo: "Redes I", 
             categoria: "PDF", 
-            estado: "En curso",
+            estado: "En Curso",
             descripcion: [
                 "Proyecto enfocado en el análisis y configuración de redes informáticas utilizando simulaciones en Cisco Packet Tracer.",
                 "Se realizaron prácticas de direccionamiento IP, configuración de dispositivos de red y verificación de conectividad mediante herramientas de diagnóstico."],
@@ -142,7 +142,7 @@ const proyectoService = (()=>{/*funcion con arreglo*/
             id: 5,
             titulo:"Ingles", 
             categoria:"PDF", 
-            estado:"En curso",
+            estado:"En Curso",
             descripcion: [
                 "Proyecto orientado al fortalecimiento de habilidades de comprensión y escritura en inglés técnico aplicado a informática.",
                 "Se trabajó con vocabulario especializado, lectura de documentación técnica y ejercicios de gramática relacionados con el ámbito tecnológico."],
@@ -194,10 +194,7 @@ const proyectoService = (()=>{/*funcion con arreglo*/
         proyectos.forEach(p => {
             p.equipo.forEach(miembro => {
                 if (!mapaIntegrantes.has(miembro.nombre)) {
-                    mapaIntegrantes.set(miembro.nombre, {
-                        nombre: miembro.nombre,
-                        rolPrincipal: miembro.rol,
-                        proyectosAsignados: []
+                    mapaIntegrantes.set(miembro.nombre, {nombre: miembro.nombre, rolPrincipal: miembro.rol, institucion: "Instituto de Educación Superior N° 7", proyectosAsignados: []
                     });
                 }
                 mapaIntegrantes.get(miembro.nombre).proyectosAsignados.push({
