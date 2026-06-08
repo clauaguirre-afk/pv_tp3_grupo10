@@ -194,7 +194,7 @@ const proyectoService = (()=>{/*funcion con arreglo*/
         proyectos.forEach(p => {
             p.equipo.forEach(miembro => {
                 if (!mapaIntegrantes.has(miembro.nombre)) {
-                    mapaIntegrantes.set(miembro.nombre, {nombre: miembro.nombre, rolPrincipal: miembro.rol, institucion: "Instituto de Educación Superior N° 7", proyectosAsignados: []
+                    mapaIntegrantes.set(miembro.nombre, {nombre: miembro.nombre, rolPrincipal: miembro.rol, institucion: "Facultad de Ingenieria", proyectosAsignados: []
                     });
                 }
                 mapaIntegrantes.get(miembro.nombre).proyectosAsignados.push({
