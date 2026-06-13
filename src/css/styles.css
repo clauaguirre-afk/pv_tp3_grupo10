@@ -355,3 +355,34 @@ ul li {
   font-weight: bold;
   display: inline-block;
 }
+
+/* Principal del Header */
+.header-principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.header-user-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 8px 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    text-align: right;
+    min-width: 120px;
+}
+
+.user-name {
+    display: block;
+    color: #333333;
+    font-size: 0.95rem;
+}
+
+.user-rol {
+    font-size: 0.8rem;
+    color: #666666;
+    font-weight: 500;
+}
