@@ -16,7 +16,7 @@ export const UsuarioProvider = ({ children }) => {
     });
 
     useEffect(() => {
-        localStorage.setItem("usuarioGlobal". JSON.stringify(usuario));
+        localStorage.setItem("usuarioGlobal", JSON.stringify(usuario));
     }, [usuario]);
 
     const actualizarPerfil = (nuevosDatos) => {
