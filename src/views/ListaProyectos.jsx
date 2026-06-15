@@ -1,10 +1,9 @@
-import FormularioProyecto from "./FormularioProyecto";
+import FormularioProyecto from "../components/FormularioProyecto.jsx";
 import { useState, useEffect, useRef } from "react";
-import RegistroActividad from "./RegistroActividad";
-import proyectoService from "../services/proyectoService";
+import RegistroActividad from "../components/RegistroActividad.jsx";
+import proyectoService from "../services/proyectoService.js";
 import "../css/listaProyectos.css";
-import ProyectoCard from "./ProyectoCard.jsx";
-import DetalleProyecto from "./DetalleProyecto.jsx";
+import ProyectoCard from "../components/ProyectoCard.jsx";
 
 const ListaProyectos = () => {
 
@@ -13,10 +12,9 @@ const ListaProyectos = () => {
     );
 
     const [busqueda, setBusqueda] = useState("");
-    const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null);
-    const [ultimaActividad, setUltimaActividad] = useState("");
+    const [ultimaActividad, setUltimaActividad] = useState(null);
 
-    const primeraCarga = useRef(true);
+    const primeraCarga = useRef(0);
 
     const eliminar = (id) => {
 
@@ -43,16 +41,6 @@ const ListaProyectos = () => {
                     setProyectos(
                         proyectoService.obtenerProyectos()
                     );
-
-                    if (
-                        proyectoSeleccionado &&
-                        proyectoSeleccionado.id === id
-                    ) {
-
-                        setProyectoSeleccionado(null);
-
-                    }
-
                 },300);
 
             }
@@ -60,48 +48,8 @@ const ListaProyectos = () => {
         }
 
     };
-
-    const verDetalle=(proyecto)=>{
-
-        setProyectoSeleccionado(proyecto);
-
-        setTimeout(()=>{
-
-            const detalleDiv =
-            document.getElementById(
-                "detalle"
-            );
-
-            if(detalleDiv){
-
-                detalleDiv.scrollIntoView({
-                    behavior:"smooth"
-                });
-
-            }
-
-        },100);
-
-    };
-
-    const buscar=(texto)=>{
-
+    const buscar = (texto) => {
         setBusqueda(texto);
-
-        if(texto===""){
-
-            setProyectos(
-                proyectoService.obtenerProyectos()
-            );
-
-        }else{
-
-            setProyectos(
-                proyectoService.buscarProyecto(texto)
-            );
-
-        }
-
     };
 
     const agregar=(formulario)=>{
@@ -134,60 +82,39 @@ const ListaProyectos = () => {
         }
 
         const nuevoProyecto={
-
             id:Date.now(),
-
             titulo,
-
             categoria,
-
             estado,
-
             descripcion:[
                 descripcion1,
                 descripcion2
             ],
-
             recursos:{
                 pdf,
                 drive,
                 github
             },
-
             equipo:[
                 {
                     nombre:integrante,
                     rol:rol
                 }
             ]
-
         };
-
         proyectoService.agregarProyecto(
             nuevoProyecto
         );
-
         setProyectos(
             proyectoService.obtenerProyectos()
         );
-
     };
-
     useEffect(()=>{
-
-        if(
-            primeraCarga.current
-        ){
-
-            primeraCarga.current=false;
-
+        primeraCarga.current += 1;
+        if(primeraCarga.current <= 2){
             return;
-
         }
-
-        const fecha=
-        new Date();
-
+        const fecha = new Date();
         const dia=
         fecha.toLocaleDateString(
             "es-AR",
@@ -197,7 +124,6 @@ const ListaProyectos = () => {
                 year:"numeric"
             }
         );
-
         const hora=
         fecha.toLocaleTimeString(
             "es-AR",
@@ -207,27 +133,23 @@ const ListaProyectos = () => {
                 hour12:false
             }
         );
-
+        console.log({dia,hora});
         setUltimaActividad(
             `Última actualización de la lista: ${dia} a las ${hora} hs.`
         );
-
     },[proyectos]);
-
+    const proyectosMostrar = busqueda === "" ? proyectos : proyectos.filter(
+        p => p.titulo.toLowerCase().includes(busqueda.toLowerCase())
+    );
     return(
-
         <div>
-
             <h2 className="titulo">
                 Gestión de Proyectos Educativos
             </h2>
-
             <FormularioProyecto
                 agregar={agregar}
             />
-
             <div className="buscador">
-
                 <input
                 type="text"
                 placeholder="Buscar proyecto..."
@@ -238,62 +160,31 @@ const ListaProyectos = () => {
                     )
                 }
                 />
-
             </div>
-
             <section className="contenedor-proyectos">
-
                 <div className="lista-proyectos">
-
-                    {
-                        proyectos.map(
-                            p=>(
-                            <div
+                    {proyectosMostrar.map((p)=>(
+                        <div
                             id={`tarjeta-${p.id}`}
                             key={p.id}
                             className="tarjeta-animacion-container"
-                            >
-
+                        >
                             <ProyectoCard
-                            proyecto={p}
-                            eliminar={eliminar}
-                            verDetalle={verDetalle}
+                                proyecto={p}
+                                eliminar={eliminar}
                             />
-
-                            </div>
-                            )
+                        </div>
                         )
-                    }
-
+                    )
+                }
                 </div>
-
-                <div
-                id="detalle"
-                className="detalle-container"
-                >
-
-                <DetalleProyecto
-                proyecto={proyectoSeleccionado}
-                />
-
-                </div>
-
             </section>
-
-            {
-                ultimaActividad && (
-
-                <RegistroActividad
-                ultimaActividad={ultimaActividad}
-                />
-
+            {ultimaActividad && (
+                <RegistroActividad ultimaActividad={ultimaActividad}/>
                 )
             }
-
         </div>
-
     );
-
 };
 
 export default ListaProyectos;

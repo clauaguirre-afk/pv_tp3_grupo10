@@ -4,7 +4,7 @@ const proyectoService = (()=>{/*funcion con arreglo*/
             id: 1,
             titulo: "Programacion Visual", 
             categoria: "Web", 
-            estado: "En curso",
+            estado: "En Curso",
             descripcion: [
                 "Proyecto realizado en React para aprender componentes y props.",
                 "Incluye manejo de estados, renderizado dinámico y comunicación entre componentes utilizando props."],
@@ -18,7 +18,7 @@ const proyectoService = (()=>{/*funcion con arreglo*/
                 rol: "Diseño y Desarrollo"
             },
             {
-                nombre:"Yesica Micaela Soria",
+                nombre:"Flores Aparicio Daniel Jesus",
                 rol: "Diseño y Desarrollo"
 
             },
@@ -29,7 +29,12 @@ const proyectoService = (()=>{/*funcion con arreglo*/
             {
                 nombre:"Albaro Samuel Ruiz",
                 rol: "Diseño y Desarrollo"
-            }]
+            },
+            {
+                nombre:"Argota Martin Ramon",
+                rol: "Diseño y Desarrollo"
+            }
+        ]
         },
         {
             id: 2,
@@ -44,12 +49,12 @@ const proyectoService = (()=>{/*funcion con arreglo*/
                 drive:"drive.google.com/bd",
                 github:"github.com/bd"
             },
-            equipo: [{
+           equipo: [{
                 nombre: "Claudio Emanuel Agurres Gomez",
                 rol: "Diseño y Desarrollo"
             },
             {
-                nombre:"Yesica Micaela Soria",
+                nombre:"Flores Aparicio Daniel Jesus",
                 rol: "Diseño y Desarrollo"
 
             },
@@ -60,13 +65,18 @@ const proyectoService = (()=>{/*funcion con arreglo*/
             {
                 nombre:"Albaro Samuel Ruiz",
                 rol: "Diseño y Desarrollo"
-            }]
+            },
+            {
+                nombre:"Argota Martin Ramon",
+                rol: "Diseño y Desarrollo"
+            }
+        ]
         },
         {
             id: 3,
             titulo: "Redes I", 
             categoria: "PDF", 
-            estado: "En curso",
+            estado: "En Curso",
             descripcion: [
                 "Proyecto enfocado en el análisis y configuración de redes informáticas utilizando simulaciones en Cisco Packet Tracer.",
                 "Se realizaron prácticas de direccionamiento IP, configuración de dispositivos de red y verificación de conectividad mediante herramientas de diagnóstico."],
@@ -80,7 +90,7 @@ const proyectoService = (()=>{/*funcion con arreglo*/
                 rol: "Diseño y Desarrollo"
             },
             {
-                nombre:"Yesica Micaela Soria",
+                nombre:"Flores Aparicio Daniel Jesus",
                 rol: "Diseño y Desarrollo"
 
             },
@@ -91,7 +101,12 @@ const proyectoService = (()=>{/*funcion con arreglo*/
             {
                 nombre:"Albaro Samuel Ruiz",
                 rol: "Diseño y Desarrollo"
-            }]
+            },
+            {
+                nombre:"Argota Martin Ramon",
+                rol: "Diseño y Desarrollo"
+            }
+        ]
         },
         {
             id: 4,
@@ -110,7 +125,7 @@ const proyectoService = (()=>{/*funcion con arreglo*/
                 rol: "Diseño y Desarrollo"
             },
             {
-                nombre:"Yesica Micaela Soria",
+                nombre:"Flores Aparicio Daniel Jesus",
                 rol: "Diseño y Desarrollo"
 
             },
@@ -127,7 +142,7 @@ const proyectoService = (()=>{/*funcion con arreglo*/
             id: 5,
             titulo:"Ingles", 
             categoria:"PDF", 
-            estado:"En curso",
+            estado:"En Curso",
             descripcion: [
                 "Proyecto orientado al fortalecimiento de habilidades de comprensión y escritura en inglés técnico aplicado a informática.",
                 "Se trabajó con vocabulario especializado, lectura de documentación técnica y ejercicios de gramática relacionados con el ámbito tecnológico."],
@@ -141,7 +156,7 @@ const proyectoService = (()=>{/*funcion con arreglo*/
                 rol: "Diseño y Desarrollo"
             },
             {
-                nombre:"Yesica Micaela Soria",
+                nombre:"Flores Aparicio Daniel Jesus",
                 rol: "Diseño y Desarrollo"
 
             },
@@ -172,10 +187,33 @@ const proyectoService = (()=>{/*funcion con arreglo*/
             p.titulo.toLowerCase().includes(texto.toLowerCase())
         )
     }
+
+    const obtenerIntegrantes = () => {
+        const mapaIntegrantes = new Map();
+        
+        proyectos.forEach(p => {
+            p.equipo.forEach(miembro => {
+                if (!mapaIntegrantes.has(miembro.nombre)) {
+                    mapaIntegrantes.set(miembro.nombre, {nombre: miembro.nombre, rolPrincipal: miembro.rol, institucion: "Facultad de Ingenieria", proyectosAsignados: []
+                    });
+                }
+                mapaIntegrantes.get(miembro.nombre).proyectosAsignados.push({
+                    id: p.id,
+                    titulo: p.titulo,
+                    estado: p.estado,
+                    rolEnProyecto: miembro.rol
+                });
+            });
+        });
+        
+        return Array.from(mapaIntegrantes.values());
+    };
+
     return {obtenerProyectos,
         agregarProyecto,
         eliminarProyecto,
-        buscarProyecto
+        buscarProyecto,
+        obtenerIntegrantes
     };
 })();
 export default proyectoService;
