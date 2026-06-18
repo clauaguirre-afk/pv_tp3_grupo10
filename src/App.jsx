@@ -6,10 +6,10 @@ import PerfilUsuario from './views/PerfilUsuario';
 import DetalleProyecto from './views/DetalleProyecto';
 import { Routes, Route } from 'react-router-dom';
 import { UsuarioProvider } from './context/UsuarioContext';
-const App =()=>{
+
+const App = () => {
   return (
     <UsuarioProvider>
-
       <div className="contenedor2">
 
         <Header />
@@ -27,8 +27,8 @@ const App =()=>{
         <Footer />
 
       </div>
-
     </UsuarioProvider>
   );
 }
+
 export default App;
